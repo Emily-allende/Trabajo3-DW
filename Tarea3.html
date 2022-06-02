@@ -1,9 +1,9 @@
-//Ingresael nombre de usuario y que cuando ingrese la contrasenia que le aparesca que si es segura o no 
+<!-- //Ingresael nombre de usuario y que cuando ingrese la contrasenia que le aparesca que si es segura o no 
 // Si la contrasenia 
 // -8 o + => Su contrasenia es segura(verde)
 // Sino => Su contrasenia es insegura(rojo)
 // largo de caracter
-//input con puntos
+//input con puntos -->
 <body>
     <div id="root"></div>
     <script src="https://unpkg.com/react@16.12.0/umd/react.development.js"></script>
@@ -14,22 +14,28 @@
       const rootElement = document.getElementById('root')
       function Saludo() {
         console.log('Entre')
-        const [name, setName] = React.useState('');
-        const [pass]= React.useState('');
+        const [name,setName] = React.useState('');
         const handleChange = event => setName(event.target.value)
-        return (
-          <>
-          <form>
-          <input type="text" onChange={handleChange} value={name} />
-          <input type='password' value={pass} />
-          </form>
-          {name ? <p> Hola, {name}</p> : 'Ingrese su nombre'}
-          <p style= {pass ? <p> 'Su contrasenia es segura'</p> : 'Su contrasenia es insegura'} />
-
-          </>
+        const [pass, setPass] = React.useState('');
+        const hanChange = event => setPass(event.target.value)
+        const Saludo = props => <span>El texto {props.texto} tiene {props.texto.length} caracteres</span>;
+        return(
+            <>
+            <div>
+                <input type="text" onChange={handleChange} value={name} />
+                <br />
+                <input type="password"onChange={hanChange} value={pass}/>
+            </div>
+            {name ? <p> Hola {name}</p> : 'Ingrese su nombre'}
+            <br />
+            {pass.length > 8 ? <p style={{color:"green"}}> La contraseña es segura</p> : <p style={{color:"red"}}> La contraseña es incorrecta </p>} 
+            </>
         )
       }
-      
       ReactDOM.render(<Saludo />, rootElement)
     </script>
+    <!-- <style>
+        .colorTrue{ color: "green"}
+        .colorFolse{ color: "red"}
+    </style> -->
   </body>
